@@ -1,8 +1,271 @@
-*{
+@import "variables";
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
-      font-family: 'Graphik', sans-serif;
+
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+body {
+  font-family: 'Graphik', sans-serif;
+  color: $blackColor;
+}
+
+.section-block {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 20px 100px;
+
+  a {
+    color: $blackColor;
+    display: block;
+    text-decoration: none;
+  }
+
+  .header {
+    font-size: 320px;
+    line-height: 260px;
+    text-transform: uppercase;
+    font-weight: 600;
+    min-height: 520px;
+
+  }
+
+  .figure {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+  }
+
+  $figureW: 235px;
+  $figureH: 235px;
+
+  .circle {
+    width: $figureW;
+    height: $figureH;
+    background: $blackColor;
+    border-radius: 50%;
+  }
+
+  .square {
+    width: $figureW;
+    height: $figureH;
+    background: $blackColor;
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-left: $figureW*6/10 solid transparent;
+    border-right: $figureW*6/10 solid transparent;
+    border-bottom: $figureW solid $blackColor;
+  }
+
+  .triangle-down {
+    width: 0;
+    height: 0;
+    border-left: $figureW*6/10 solid transparent;
+    border-right: $figureW*6/10 solid transparent;
+    border-top: $figureW solid $blackColor;
+  }
+
+  .content {
+    width: calc(50vw - 20px);
+    margin-left: calc(50vw - 20px);
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+    &-rotate {
+      margin-left: 0;
+      margin-right: calc(50vw - 20px);
+    }
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: $blackColor;
+    margin: 30px 0;
+
+    &.big {
+      margin: 60px 0;
+    }
+
+    &.b-m-60 {
+      margin-bottom: 60px;
+    }
+  }
+
+  .arrow {
+    width: 75px;
+    &.arrow-for-click{
+      transform: rotate(180deg);
+      transition: .25s transform;
+      &.opened{
+        transform: rotate(0deg);
+      transition: .25s transform;
+      }
+    }
+  }
+
+  &#portfolioBlock {
+    padding: 20px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    background: $whiteColor;
+
+    #portPart, #folioPart {
+      font-size: 26.04vw;
+      line-height: 28.125vw;
+      font-weight: bold;
+      display: block;
+      width: 100vw;
+    }
+
+    #portPart {
+      text-align: left;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translate(50%, -50%);
+        right: 0px;
+        width: 28.125vw;
+        height: 28.125vw;
+        border-radius: 50%;
+        background: $blackColor;
+      }
+    }
+
+    #folioPart {
+      text-align: right;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, 0%);
+        left: 0px;
+        width: 28.125vw;
+        height: 28.125vw;
+        background: $blackColor;
+      }
+    }
+  }
+
+  &#aboutBlock {
+    background: $redColor;
+    min-height: 100vh;
+
+    .fullname {
+      font-size: 160px;
+      font-weight: 500;
+    }
+
+    .position {
+      font-size: 80px;
+      font-weight: 500;
+    }
+
+    .description {
+      font-size: 40px;
+      line-height: 60px;
+    }
+  }
+
+  &#experienceBlock {
+    background: $yellowColor;
+    min-height: 100vh;
+
+    .position {
+      font-size: 60px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .company, .dates, .city{
+      font-size: 60px;
+      line-height: 1.5;
+    }
+  }
+
+  &#educationBlock {
+    background: $greenColor;
+    min-height: 100vh;
+      .degree {
+      font-size: 60px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .university, .dates, .city{
+      font-size: 60px;
+      line-height: 1.5;
+    }
+  }
+
+  &#skillsBlock {
+    background: $blueColor;
+    min-height: 100vh;
+
+    .title {
+      font-size: 60px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .skill, .level {
+      font-size: 60px;
+      line-height: 1.5;
+    }
+  }
+
+  &#projectsBlock {
+    background: $cyanColor;
+    min-height: 100vh;
+
+    .project-link, .project-date {
+      font-size: 60px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    .project-link-arrow {
+      vertical-align: text-bottom;
+      width: 75px;
+    }
+  }
+
+  &#contactsBlock {
+    .header {
+    }
+
+    background: $violetColor;
+    min-height: 100vh;
+
+    .address, .email, .copyright {
+      font-size: 40px;
+      line-height: 60px;
+    }
+
+    .link {
+      font-size: 120px;
+      font-weight: 600;
+    }
+  }
 }

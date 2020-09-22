@@ -1,53 +1,327 @@
 <template>
-  <div id="cv">
-    <div class="navigation-block">
-      <input v-model="isMenuOpened" type="checkbox">
-      <div @click="isMenuOpened=!isMenuOpened" class="menu">
-        <span class="hamburger"></span>
-      </div>
-      <transition name="fade">
-        <nav v-show="isMenuOpened">
-          <json-nav
-            v-show="isMenuOpened"
-            :value="jsonObj"
-            :expand-depth="1">
-
-          </json-nav>
-        </nav>
-      </transition>
-    </div>
-    <main>
-      <div class="bg">
-        <div class="block block-1"></div>
-        <div class="block block-2"></div>
-        <div class="block block-3"></div>
-        <div class="block block-4"></div>
-        <div class="block block-5"></div>
-        <div class="block block-6"></div>
-      </div>
-      <div class="cs-block">
-        <h1 class="fullname">Volodymyr Batiuk</h1>
-        <h2 class="position">Front-End Developer</h2>
-        <div class="contacts">
-          <a href="tel:+38(095)7485107" class="phone">+38 (095) 74 85 107</a>
-          <a href="mailto:v@bati.uk" class="email">v@bati.uk</a>
+  <div id="portfolio">
+    <main class="portfolio-main" v-show="!isMenu">
+      <section id="portfolioBlock" class="section-block">
+        <span id="portPart">PORT</span>
+        <span id="folioPart">FOLIO</span>
+      </section>
+      <section id="aboutBlock" class="section-block">
+        <div class="header">About<br/>Me</div>
+        <div class="figure circle"></div>
+        <div class="content">
+          <span class="fullname">Batiuk<br/>Volodymyr</span>
+          <div class="divider"></div>
+          <span class="position">Front-End Developer</span>
+          <div class="divider"></div>
+          <span class="description">Experienced Frontend Developer with a demonstrated history of
+            working in the information technology and services industry. Skilled in Vue.js,
+            JavaScript, WordPress, and Web Services. Strong engineering professional with
+            a Bachelor's degree focused in Computer Software Engineering from Zhytomyr
+            State Technological University.
+          </span>
+          <div class="divider"></div>
         </div>
-      </div>
+      </section>
+      <section class="section-block" id="experienceBlock">
+        <div class="header">exper<br/>ience</div>
+        <div class="figure square"></div>
+        <div class="content">
+          <div class="work">
+            <div class="divider"></div>
+            <div class="row" @click="work1Show = !work1Show">
+              <span class="position">Junior Front-End Developer</span>
+              <img class="arrow arrow-for-click" :class="{'opened':work1Show}"
+                   :src="arrow" alt="Arrow Image"/>
+            </div>
+            <div v-show="work1Show" class="work-info">
+              <div class="divider"></div>
+              <div class="row">
+                <span class="company">Company</span>
+                <span class="company">Viseven</span>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <span class="dates">Dates</span>
+                <span class="dates">Aug 2019 - Present</span>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <span class="city">City</span>
+                <span class="city">Zhytomyr, Ukraine</span>
+              </div>
+                <div class="divider"></div>
+            </div>
+            <div v-show="!work1Show" class="divider"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section-block" id="educationBlock">
+        <div class="header">educ<br/>ation</div>
+        <div class="figure triangle"></div>
+        <div class="content">
+          <div class="education">
+            <div class="divider"></div>
+            <div class="row" @click="education1Show = !education1Show">
+              <span class="degree">Bachelor's degree</span>
+              <img class="arrow arrow-for-click" :class="{'opened':education1Show}"
+                   :src="arrow" alt="Arrow Image"/>
+            </div>
+            <div v-show="education1Show" class="education-info">
+              <div class="divider"></div>
+              <div class="row">
+                <span class="university">University</span>
+                <A href="https://ztu.edu.ua/" class="university">ZSTU</A>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <span class="dates">Dates</span>
+                <span class="dates">Sep 2016 - Jun 2020</span>
+              </div>
+              <div class="divider"></div>
+              <div class="row">
+                <span class="city">City</span>
+                <span class="city">Zhytomyr, Ukraine</span>
+              </div>
+                <div class="divider"></div>
+            </div>
+            <div v-show="!education1Show" class="divider"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section-block" id="skillsBlock">
+        <div class="header">skills</div>
+        <div class="figure triangle-down"></div>
+        <div class="content">
+          <span class="title">General</span>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">JavaScript</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">HTML5</span>
+            <span class="level">Perfect</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">CSS3</span>
+            <span class="level">Perfect</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">SASS/SCSS</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Vue.js</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Node.js</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Git</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Express.js</span>
+            <span class="level">Normal</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="content-rotate">
+          <span class="title">Languages</span>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Ukrainian</span>
+            <span class="level">Native</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Russian</span>
+            <span class="level">Native</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">English</span>
+            <span class="level">Intermediate</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="content">
+          <span class="title">CMS</span>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">WordPress</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">Strapi.js</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="content-rotate">
+          <span class="title">Amazon Web Services</span>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">AWS Lambda</span>
+            <span class="level">Good</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">AWS RDS</span>
+            <span class="level">Normal</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">AWS Amplify</span>
+            <span class="level">Perfect</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="skill">AWS EC2</span>
+            <span class="level">Normal</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </section>
+      <section class="section-block" id="projectsBlock">
+        <div class="header">proj<br/>ects</div>
+        <div class="figure square"></div>
+        <div class="content">
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 7
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Apr  2020</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 6
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Mar  2020</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 5
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Feb  2020</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 4
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Jan  2020</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 3
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Dec  2019</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 2
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Nov  2019</span>
+          </div>
+          <div class="divider"></div>
+          <div class="row">
+            <a class="project-link">Project 1
+              <img class="project-link-arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+            <span class="project-date">Sep  2019</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </section>
+      <section class="section-block" id="contactsBlock">
+        <div class="header">Cont<br/>acts</div>
+        <div class="figure circle"></div>
+        <div class="content">
+          <div class="divider"></div>
+          <span class="address">
+            60 Kyiv str., Korostushiv,<br/>
+            Zhytomyrska oblast, Ukraine<br/>
+            +380 95 74 85 107<br/></span>
+          <div class="divider"></div>
+          <div class="row">
+            <span class="email">Email</span>
+            <span class="email">v@bati.uk</span>
+          </div>
+          <div class="divider b-m-60"></div>
+          <div class="row">
+            <a class="link" href="https://www.linkedin.com/in/v-batiuk/">
+              LinkedIn
+            </a>
+            <a class="arrow-link" href="https://www.linkedin.com/in/v-batiuk/">
+              <img class="arrow" :src="linkArrow" alt="Arrow link"/>
+            </a></div>
+          <div class="divider big"></div>
+          <div class="row">
+            <a class="link" href="https://www.instagram.com/bati.uk/">
+              Instagram
+            </a>
+            <a class="arrow-link" href="https://www.instagram.com/bati.uk/">
+              <img class="arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+          </div>
+          <div class="divider big"></div>
+          <div class="row">
+            <a class="link">
+              Telegram
+            </a>
+            <a class="arrow-link" href="#">
+              <img class="arrow" :src="linkArrow" alt="Arrow link"/>
+            </a>
+          </div>
+          <div class="divider big"></div>
+          <span class="copyright">©2020, v.bati.uk</span>
+        </div>
+      </section>
     </main>
+    <nav v-show="isMenu" class="menu-main">
+      <json-nav
+        :value="jsonObj"
+        :expand-depth="1">
+
+      </json-nav>
+    </nav>
+    <button class="menu-button" @click="isMenu = !isMenu">{{!isMenu?'JSON':'Design'}}</button>
   </div>
 </template>
 
 <script>
+import linkArrow from './common/images/arrow-top-r.svg';
+import arrow from './common/images/arrow-top.svg';
 import jsonNav from './components/json-nav/index.vue';
 import jsonObj from './common/json/cs.json';
 
 export default {
-  name: 'cv',
+  name: 'portfolio',
   components: { jsonNav },
   data() {
     return {
+      linkArrow,
+      arrow,
       jsonObj,
-      isMenuOpened: false,
+      isMenu: false,
+      work1Show: true,
+      education1Show: true,
     };
   },
 };
@@ -55,211 +329,25 @@ export default {
 <style lang="scss" src="./common/styles/imports.scss">
 </style>
 <style lang="scss" scoped>
-  #cv {
+  @import "common/styles/variables";
+
+  #portfolio {
     z-index: 10;
     background-color: #F0F0F0;
     width: 100vw;
     height: 100vh;
 
-    .navigation-block {
-      position: fixed;
-      z-index: 10;
-
-      .hamburger {
-        position: absolute;
-        top: 135px;
-        right: 50px;
-        width: 30px;
-        height: 2px;
-        background: #F0F0F0;
-        display: block;
-        -webkit-transform-origin: center;
-        transform-origin: center;
-        -webkit-transition: .5s ease-in-out;
-        transition: .5s ease-in-out;
-      }
-
-      .hamburger:after, .hamburger:before {
-        -webkit-transition: .5s ease-in-out;
-        transition: .5s ease-in-out;
-        content: "";
-        position: absolute;
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: #F0F0F0;
-      }
-
-      .hamburger:before {
-        top: -10px;
-      }
-
-      .hamburger:after {
-        bottom: -10px;
-      }
-
-      input {
-        display: none;
-      }
-
-      input:checked + .menu {
-        box-shadow: 0 0 0 100vw #282C34, 0 0 0 100vh #282C34;
-        border-radius: 0;
-        transition: .6s ease-in-out;
-      }
-
-      input:checked + .menu .hamburger {
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
-
-      input:checked + .menu .hamburger:after {
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-        bottom: 0;
-      }
-
-      input:checked + .menu .hamburger:before {
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
-        top: 0;
-      }
-
-      input:checked + .menu {
-        opacity: 1;
-      }
-
-      .menu {
-        position: absolute;
-        left: -100px;
-        top: -100px;
-        width: 200px;
-        height: 200px;
-        background: #282C34;
-        border-radius: 50% 50% 50% 50%;
-        -webkit-transition: .6s ease-in-out;
-        transition: .6s ease-in-out;
-        box-shadow: 0 0 0 0 #282C34, 0 0 0 0 #282C34;
-        cursor: pointer;
-      }
-
-      .fade-enter-active, .fade-leave-active {
-        opacity: 1;
-        transition: opacity .4s;
-        transition-delay: .2s;
-      }
-
-      .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
-      {
-        opacity: 0;
-        transition: opacity .4s;
-      }
-
-      nav {
-        width: 100vw;
-        height: 100vh;
-        padding-left: 100px;
-        padding-top: 100px;
-
-        .jv-container {
-        }
-      }
-
+    nav.menu-main {
+      width: 100%;
+      padding: 20px;
+      min-height: 100vh;
+      background: $blackColor;
     }
 
-    main {
-      .bg {
-        display: flex;
-        width: 100vw;
-
-        .block {
-          width: calc(100vw / 6);
-          min-width: 200px;
-          height: 100vh;
-
-          &-1 {
-            background: #EF596F;
-          }
-
-          &-2 {
-            background: #E5C07B;
-          }
-
-          &-3 {
-            background: #89CA78;
-          }
-
-          &-4 {
-            background: #61AFEF;
-          }
-
-          &-5 {
-            background: #2BBAC5;
-          }
-
-          &-6 {
-            background: #D55FDE;
-          }
-        }
-      }
-
-      .cs-block {
-        color: #282C34;
-        font-family: Graphik, sans-serif;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        min-width: 1200px;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .fullname {
-                    margin-top: 35vh;
-          font-weight: bold;
-          font-size: 96px;
-
-        }
-
-        .position {
-          margin-top: 20px;
-          font-weight: 500;
-          font-size: 48px;
-
-        }
-
-        .contacts {
-          display: flex;
-          margin-top: 30vh;
-          flex-direction: column;
-          align-items: center;
-
-          a {
-            text-decoration: none;
-            color: #282C34;
-            font-size: 48px;
-                                    font-weight: 500;
-            transition: .5s;
-
-            &:hover {
-              color: #EF596F;
-                        font-weight: 500;
-              transition: .5s;
-            }
-
-            .phone {
-
-            }
-
-            .email {
-              margin-top: 20px;
-
-            }
-          }
-        }
-      }
+    .menu-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
     }
   }
 </style>

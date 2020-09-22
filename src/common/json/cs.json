@@ -1,6 +1,149 @@
 {
-  "fullname": "Volodymyr Batiuk",
-  "position": "Front-End Developer",
-  "phone": "+38 (095) 74 85 107",
-  "email": "v@bati.uk"
+  "about": {
+    "name": "Volodymyr",
+    "surname": "Batiuk",
+    "position": "Front-End Developer",
+    "description": "Experienced Frontend Developer with a demonstrated history of working in the information technology and services industry. Skilled in Vue.js, JavaScript, WordPress, and Web Services. Strong engineering professional with a Bachelor's degree focused in Computer Software Engineering from Zhytomyr State Technological University."
+
+  },
+  "experience": [
+    {
+      "position": "Junior Front-End Developer",
+      "company": "Viseven",
+      "dates": "Aug 2019 - Present",
+      "city": "Zhytomyr, Ukraine"
+    }
+  ],
+  "education": {
+    "bachelors_degree": {
+      "degree": "Bachelor's degree",
+      "university": "ZSTU",
+      "dates": "Sep 2016 - Jun 2020",
+      "city": "Zhytomyr, Ukraine"
+    }
+  },
+  "skills": {
+    "general": [
+      {
+        "skill": "Java Script",
+        "level": "Good"
+      },
+      {
+        "skill": "HTML5",
+        "level": "Perfect"
+      },
+      {
+        "skill": "CSS3",
+        "level": "Perfect"
+      },
+      {
+        "skill": "SASS/SCSS",
+        "level": "Good"
+      },
+      {
+        "skill": "Vue.js",
+        "level": "Good"
+      },
+      {
+        "skill": "Node.js",
+        "level": "Good"
+      },
+      {
+        "skill": "Gits",
+        "level": "Good"
+      },
+      {
+        "skill": "Express.js",
+        "level": "Normal"
+      }
+    ],
+    "languages": [
+      {
+        "skill": "Ukrainian",
+        "level": "Native"
+      },
+      {
+        "skill": "Russian",
+        "level": "Native"
+      },
+      {
+        "skill": "English",
+        "level": "Intermediate"
+      }
+    ],
+    "csm": [
+      {
+        "skill": "WordPress",
+        "level": "Good"
+      },
+      {
+        "skill": "Strapi.js",
+        "level": "Good"
+      }
+    ],
+    "aws": [
+      {
+        "skill": "AWS Lambda",
+        "level": "Good"
+      },
+      {
+        "skill": "AWS RDS",
+        "level": "Normal"
+      },
+      {
+        "skill": "AWS Amplify",
+        "level": "Perfect"
+      },
+      {
+        "skill": "AWS EC2",
+        "level": "Normal"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "name": "Project 7",
+      "link": "#",
+      "date": "Apr 2020"
+    },
+    {
+      "name": "Project 6",
+      "link": "#",
+      "date": "Mar 2020"
+    },
+    {
+      "name": "Project 5",
+      "link": "#",
+      "date": "Feb 2020"
+    },
+    {
+      "name": "Project 4",
+      "link": "#",
+      "date": "Jan 2020"
+    },
+    {
+      "name": "Project 3",
+      "link": "#",
+      "date": "Dec 2019"
+    },
+    {
+      "name": "Project 2",
+      "link": "#",
+      "date": "Nov 2019"
+    },
+    {
+      "name": "Project 1",
+      "link": "#",
+      "date": "Sep 2019"
+    }
+  ],
+  "contacts": {
+    "address": "60 Kyiv str., Korostushiv, Zhytomyrska oblast, Ukraine",
+    "phone": "+380 95 74 85 107",
+    "email": "v@bati.uk",
+    "linkedIn": "https://www.linkedin.com/in/v-batiuk/",
+    "instagram": "https://www.instagram.com/bati.uk/",
+    "telegram": "@v_batiuk",
+    "copyright": "©2020, v.bati.uk"
+  }
 }
