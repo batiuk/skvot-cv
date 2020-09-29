@@ -1,3 +1,33 @@
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 768px;
+
+// Small tablets (portrait view)
+$screen-md-min: 1024px;
+
+// Tablets and small desktops
+$screen-lg-min: 1440px;
+
+@mixin sm {
+   @media (max-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+
+// Medium devices
+@mixin md {
+   @media (max-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+
+// Large devices
+@mixin lg {
+   @media (max-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+
+//Colors
 $blackColor: #282C34;
 $whiteColor: #F0F0F0;
 $redColor: #EF596F;
@@ -6,3 +36,15 @@ $greenColor: #89CA78;
 $blueColor: #61AFEF;
 $cyanColor: #2BBAC5;
 $violetColor: #D55FDE;
+//Font sizes
+// > 1024px
+$defaultFontSize: 2.0833vw; //40px
+$x1dot5FontSize: $defaultFontSize*1.5; //60px
+$x2FontSize: $defaultFontSize*2; //80px
+$x2dot5FontSize: $defaultFontSize*2.5; //100px
+$x3FontSize: $defaultFontSize*3; //120px
+$x4FontSize: $x2FontSize*2; //160px
+//imagesSize
+$arrowSize: 3.906vw;
+//Indents
+

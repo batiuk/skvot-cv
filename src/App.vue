@@ -6,10 +6,10 @@
         <span id="folioPart">FOLIO</span>
       </section>
       <section id="aboutBlock" class="section-block">
-        <div class="header">About<br/>Me</div>
+        <div class="header">About <br/>Me</div>
         <div class="figure circle"></div>
         <div class="content">
-          <span class="fullname">Batiuk<br/>Volodymyr</span>
+          <span class="fullname">Batiuk <br/>Volodymyr</span>
           <div class="divider"></div>
           <span class="position">Front-End Developer</span>
           <div class="divider"></div>
@@ -49,7 +49,7 @@
                 <span class="city">City</span>
                 <span class="city">Zhytomyr, Ukraine</span>
               </div>
-                <div class="divider"></div>
+              <div class="divider"></div>
             </div>
             <div v-show="!work1Show" class="divider"></div>
           </div>
@@ -82,7 +82,7 @@
                 <span class="city">City</span>
                 <span class="city">Zhytomyr, Ukraine</span>
               </div>
-                <div class="divider"></div>
+              <div class="divider"></div>
             </div>
             <div v-show="!education1Show" class="divider"></div>
           </div>
@@ -194,7 +194,9 @@
         </div>
       </section>
       <section class="section-block" id="projectsBlock">
-        <div class="header">proj<br/>ects</div>
+        <div class="header-wrapper">
+        <div class="header" :class="{'fixed':isProjectBlock}">proj<br/>ects</div>
+        </div>
         <div class="figure square"></div>
         <div class="content">
           <div class="divider"></div>
@@ -250,7 +252,9 @@
         </div>
       </section>
       <section class="section-block" id="contactsBlock">
-        <div class="header">Cont<br/>acts</div>
+        <div class="header-wrapper">
+          <div class="header" :class="{'fixed':isContactBlock,}">Cont<br/>acts</div>
+        </div>
         <div class="figure circle"></div>
         <div class="content">
           <div class="divider"></div>
@@ -322,7 +326,17 @@ export default {
       isMenu: false,
       work1Show: true,
       education1Show: true,
+      isContactBlock: false,
+      isProjectBlock: false,
     };
+  },
+  mounted() {
+    document.addEventListener('scroll', () => {
+      const contactBlock = document.getElementById('contactsBlock');
+      this.isContactBlock = contactBlock.offsetTop <= window.pageYOffset;
+      const projectBlock = document.getElementById('projectsBlock');
+      this.isProjectBlock = projectBlock.offsetTop <= window.pageYOffset;
+    });
   },
 };
 </script>
@@ -330,7 +344,6 @@ export default {
 </style>
 <style lang="scss" scoped>
   @import "common/styles/variables";
-
   #portfolio {
     z-index: 10;
     background-color: #F0F0F0;

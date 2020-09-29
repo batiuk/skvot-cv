@@ -7,19 +7,24 @@
 }
 
 ::-webkit-scrollbar {
-  width: 0px; /* Remove scrollbar space */
-  background: transparent; /* Optional: just make scrollbar invisible */
+  width: 0;
+  background: transparent;
 }
 
 body {
   font-family: 'Graphik', sans-serif;
+  line-height: 1.5;
   color: $blackColor;
 }
 
 .section-block {
   position: relative;
   overflow: hidden;
+  //box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
   padding: 50px 20px 100px;
+  @include sm {
+    padding: 30px 20px;
+  }
 
   a {
     color: $blackColor;
@@ -28,22 +33,60 @@ body {
   }
 
   .header {
-    font-size: 320px;
-    line-height: 260px;
+    $fs: 16.07vw;
+    $lh: 0.8125;
+    font-size: $fs;
+    line-height: $lh;
     text-transform: uppercase;
     font-weight: 600;
-    min-height: 520px;
+    min-height: $lh*$fs*2;
+    margin-bottom: 5vw;
+    @include sm {
+      font-size: 12.5vw;
+      min-height: unset;
+      margin-bottom: 40px;
+      font-weight: 700;
+      br {
+        display: none;
+      }
 
+    }
+
+    &-wrapper {
+      min-height: $lh*$fs*2;
+      margin-bottom: 5vw;
+       @include sm {
+         min-height: unset;
+       }
+    }
+
+    &.fixed {
+      position: fixed;
+      top: 50px;
+      @include sm {
+        position: inherit;
+        top: unset;
+      }
+    }
+
+    &.pa-b {
+      position: absolute;
+      bottom: 0;
+    }
   }
 
   .figure {
     position: absolute;
     right: 20px;
     top: 50px;
+    @include sm {
+      display: none;
+
+    }
   }
 
-  $figureW: 235px;
-  $figureH: 235px;
+  $figureW: 12.239vw;
+  $figureH: 12.239vw;
 
   .circle {
     width: $figureW;
@@ -84,6 +127,17 @@ body {
     &-rotate {
       margin-left: 0;
       margin-right: calc(50vw - 20px);
+          @include sm {
+      margin: 0;
+      width: 100%;
+      padding: 0 0 20px 0;
+    }
+    }
+
+    @include sm {
+      margin: 0;
+      width: 100%;
+      padding: 0 0 20px 0;
     }
   }
 
@@ -94,28 +148,37 @@ body {
   }
 
   .divider {
+    $m: 1.5625vw;
     width: 100%;
     height: 1px;
     background: $blackColor;
-    margin: 30px 0;
+    margin: $m 0;
 
     &.big {
-      margin: 60px 0;
+      margin: $m*2 0;
     }
 
     &.b-m-60 {
-      margin-bottom: 60px;
+      margin-bottom: $m*2;
     }
   }
 
   .arrow {
-    width: 75px;
-    &.arrow-for-click{
+    width: $arrowSize;
+           @include sm {
+         width: $arrowSize*1.5;
+       }
+
+    &.arrow-for-click {
       transform: rotate(180deg);
-      transition: .25s transform;
-      &.opened{
+      transition: .25s transform; @include sm {
+         display: none;
+       }
+
+      &.opened {
         transform: rotate(0deg);
-      transition: .25s transform;
+        transition: .25s transform;
+
       }
     }
   }
@@ -172,82 +235,111 @@ body {
 
   &#aboutBlock {
     background: $redColor;
-    min-height: 100vh;
 
     .fullname {
-      font-size: 160px;
+      font-size: $x4FontSize;
       font-weight: 500;
+            @include sm {
+      br{display: none;}
+
+    }
     }
 
     .position {
-      font-size: 80px;
+      font-size: $x2FontSize;
       font-weight: 500;
     }
 
     .description {
-      font-size: 40px;
-      line-height: 60px;
+      font-size: $defaultFontSize;
+      @include sm {
+        font-size: $x2FontSize;
+      }
+      line-height: 1.5;
     }
   }
 
   &#experienceBlock {
     background: $yellowColor;
-    min-height: 100vh;
 
     .position {
-      font-size: 60px;
+      font-size: $x1dot5FontSize;
+                   @include sm{
+font-size: $x3FontSize;
+ }
       line-height: 1.5;
       font-weight: 500;
     }
-    .company, .dates, .city{
-      font-size: 60px;
+
+    .company, .dates, .city {
+      font-size: $x1dot5FontSize;
+                   @include sm{
+font-size: $x2FontSize;
+ }
       line-height: 1.5;
     }
   }
 
   &#educationBlock {
     background: $greenColor;
-    min-height: 100vh;
-      .degree {
-      font-size: 60px;
+
+    .degree {
+      font-size: $x1dot5FontSize;
+                   @include sm{
+font-size: $x3FontSize;
+ }
       line-height: 1.5;
       font-weight: 500;
     }
-    .university, .dates, .city{
-      font-size: 60px;
+
+    .university, .dates, .city {
+      font-size: $x1dot5FontSize;
+             @include sm{
+font-size: $x2FontSize;
+ }
       line-height: 1.5;
     }
   }
 
   &#skillsBlock {
     background: $blueColor;
-    min-height: 100vh;
 
     .title {
-      font-size: 60px;
+      font-size: $x1dot5FontSize;
       line-height: 1.5;
+                   @include sm{
+font-size: $x3FontSize;
+ }
       font-weight: 500;
     }
 
     .skill, .level {
-      font-size: 60px;
+      font-size: $x1dot5FontSize;
       line-height: 1.5;
+                   @include sm{
+font-size: $x2FontSize;
+ }
     }
   }
 
   &#projectsBlock {
     background: $cyanColor;
-    min-height: 100vh;
 
     .project-link, .project-date {
-      font-size: 60px;
+      font-size: $x1dot5FontSize;
+                   @include sm{
+font-size: $x3FontSize;
+ }
       line-height: 1.5;
       font-weight: 500;
     }
 
     .project-link-arrow {
       vertical-align: text-bottom;
-      width: 75px;
+      width: $arrowSize;
+             @include sm {
+         width: $arrowSize*1.5;
+       }
     }
   }
 
@@ -259,12 +351,15 @@ body {
     min-height: 100vh;
 
     .address, .email, .copyright {
-      font-size: 40px;
-      line-height: 60px;
+      font-size: $defaultFontSize;
+      line-height: 1.5;
+             @include sm{
+font-size: $x2FontSize;
+ }
     }
 
     .link {
-      font-size: 120px;
+      font-size: $x3FontSize;
       font-weight: 600;
     }
   }
