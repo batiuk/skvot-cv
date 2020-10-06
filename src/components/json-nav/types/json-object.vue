@@ -12,6 +12,9 @@ export default {
       type: String,
       default: '',
     },
+    links: {
+      type: Object,
+    },
     depth: {
       type: Number,
       default: 0,
@@ -47,13 +50,22 @@ export default {
   render(h) {
     const elements = [];
     if (!this.keyName) {
-      elements.push(h('span', {
+      let href = '#';
+      try {
+        href = this.links[this.keyName] ? `#${this.links[this.keyName]}` : '#';
+        // eslint-disable-next-line no-empty
+      } catch (e) {
+      }
+      elements.push(h('a', {
         class: {
           'jv-toggle': true,
           open: !!this.expand,
         },
         on: {
           click: this.toggle,
+        },
+        domProps: {
+          href,
         },
       }));
     }
@@ -80,13 +92,20 @@ export default {
             sort: this.sort,
             keyName: key,
             depth: this.depth + 1,
+            links: this.links,
             value,
           },
         }));
       }
     }
     if (!this.expand) {
-      elements.push(h('span', {
+      let href = '#';
+      try {
+        href = this.links[this.keyName] ? `#${this.links[this.keyName]}` : '#';
+        // eslint-disable-next-line no-empty
+      } catch (e) {
+      }
+      elements.push(h('a', {
         style: {
           display: this.expand ? 'none' : undefined,
         },
@@ -101,6 +120,7 @@ export default {
         },
         domProps: {
           innerHTML: '...',
+          href,
         },
       }));
     }

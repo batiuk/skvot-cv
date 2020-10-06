@@ -24,6 +24,9 @@ export default {
       type: Number,
       default: 0,
     },
+    links: {
+      type: Object,
+    },
   },
   data() {
     return {
@@ -64,7 +67,8 @@ export default {
     } else if (typeof this.value === 'function') {
       dataType = JsonFunction;
     }
-    if (this.keyName && (this.value && (Array.isArray(this.value) || typeof this.value === 'object'))) {
+    if (this.keyName
+          && (this.value && (Array.isArray(this.value) || typeof this.value === 'object'))) {
       elements.push(h('span', {
         class: {
           'jv-toggle': true,
@@ -76,12 +80,23 @@ export default {
       }));
     }
     if (this.keyName) {
-      elements.push(h('span', {
+      let href = '#';
+      try {
+        href = this.links[this.keyName] ? `#${this.links[this.keyName]}` : '#';
+        // eslint-disable-next-line no-empty
+      } catch (e) {
+      }
+
+      elements.push(h('a', {
         class: {
           'jv-key': true,
         },
+        on: {
+          click: this.toggle,
+        },
         domProps: {
           innerHTML: `${this.keyName}:`,
+          href,
         },
       }));
     }
@@ -93,6 +108,7 @@ export default {
         jsonValue: this.value,
         keyName: this.keyName,
         sort: this.sort,
+        links: this.links,
         depth: this.depth,
         expand: this.expand,
       },
@@ -112,18 +128,21 @@ export default {
 </script>
 
 <style lang="scss">
-.jv-node {
-  position: relative;
-  &:after {
-    content: ','
-  }
-  &:last-of-type {
+  .jv-node {
+    position: relative;
+
     &:after {
-      content: ''
+      content: ','
+    }
+
+    &:last-of-type {
+      &:after {
+        content: ''
+      }
+    }
+
+    & .jv-node {
+      margin-left: 25px;
     }
   }
-  & .jv-node {
-    margin-left: 25px;
-  }
-}
 </style>

@@ -25,6 +25,7 @@
         ref="jsonBox"
         :value="value"
         :sort="sort"
+        :links="links"
       />
     </div>
     <div
@@ -54,6 +55,14 @@ export default {
     value: {
       type: [Object, Array, String, Number, Boolean, Function],
       required: true,
+    },
+    links: {
+      type: Object,
+      required: false,
+      default() {
+        return {
+        };
+      },
     },
     expanded: {
       type: Boolean,
@@ -163,13 +172,16 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "../../common/styles/variables";
   $colorWhite: #F0F0F0;
 .jv-container {
   font-family: Cascadia, monospace !important;
   box-sizing: border-box;
   position: relative;
   color: $colorWhite;
-
+  a{
+    text-decoration: none;
+  }
   &.boxed {
     border: 1px solid #eee;
     border-radius: 6px;
@@ -187,6 +199,10 @@ export default {
     color: $colorWhite;
     font-size: 32px;
     line-height: 52px;
+     @include sm {
+       font-size: 18px;
+       line-height: 24px;
+     }
     font-family: Cascadia, monospace !important;
 
     .jv-ellipsis {
@@ -273,6 +289,10 @@ export default {
     cursor: pointer;
     width: 25px;
     height: 25px;
+     @include sm {
+       width: 15px;
+       height: 15px;
+     }
     margin-right: 2px;
     display: inline-block;
     transition: transform 0.1s;
